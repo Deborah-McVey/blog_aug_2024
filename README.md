@@ -11,6 +11,8 @@ rails g migration rename_password_to_hashed_password
 
 rails g model Profile user:references name:string birthday:date bio:text color:string twitter:string
 
+rails g migration add_user_reference_to_articles user:references
+
 rails g model Category name:string
 
 rails g migration CreateJoinTableArticlesCategories article category
