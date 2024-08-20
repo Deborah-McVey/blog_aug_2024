@@ -19,4 +19,7 @@ rails g migration CreateJoinTableArticlesCategories article category
 
 rails g model Comment article_id:integer name:string email:string body:text
 
+rails g controller users
+
+rails g controller comments
 
