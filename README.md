@@ -23,3 +23,5 @@ rails g controller users
 
 rails g controller comments
 
+rails g controller sessions
+
