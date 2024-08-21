@@ -1,42 +1,48 @@
-<%= form_with(model: article) do |form| %>
+<%= form_with(model: article, local: true) do |form| %>
   <% if article.errors.any? %>
-    <div style="color: red">
+    <div id="error_explanation" style="color: red">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
+  <div class="field">
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :location, style: "display: block" %>
     <%= form.text_field :location %>
   </div>
 
-  <div>
+  <div class="field">
+    <%= form.collection_check_boxes(:category_ids, Categor.all, :id, :name) do |b| %>
+    <%= b.label { b.check_box + b.text } %>
+  <% end %> 
+ </div>
+
+  <div class="field">
     <%= form.label :exerpt, style: "display: block" %>
     <%= form.text_field :exerpt %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :published_at, style: "display: block" %>
-    <%= form.datetime_field :published_at %>
+    <%= form.datetime_select :published_at %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= form.submit_or_cancel(form) %>
   </div>
 <% end %>
