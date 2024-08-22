@@ -25,3 +25,17 @@ rails g controller comments
 
 rails g controller sessions
 
+Linux/Ubuntu
+sudo apt-get install imagemagick
+convert -v
+
+rails active_storage:install
+rails db:migrate
+
+uncomment get "image_processing"
+
+rails action_text:install
+
+rails g migration MigrateArticleBodyToActionText
+
+rails g migration RemoveBodyFromArticles body:text
