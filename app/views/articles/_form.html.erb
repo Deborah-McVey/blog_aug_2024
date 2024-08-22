@@ -1,6 +1,6 @@
 <%= form_with(model: article, local: true) do |form| %>
   <% if article.errors.any? %>
-    <div id="error_explanation" style="color: red">
+    <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
@@ -12,33 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title, style: "display: block" %>
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :location, style: "display: block" %>
+    <%= form.label :location %>
     <%= form.text_field :location %>
   </div>
 
   <div class="field">
-    <%= form.collection_check_boxes(:category_ids, Categor.all, :id, :name) do |b| %>
+    <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
     <%= b.label { b.check_box + b.text } %>
   <% end %> 
  </div>
 
   <div class="field">
-    <%= form.label :exerpt, style: "display: block" %>
+    <%= form.label :exerpt %>
     <%= form.text_field :exerpt %>
   </div>
 
   <div class="field">
-    <%= form.label :body, style: "display: block" %>
+    <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
 
   <div class="field">
-    <%= form.label :published_at, style: "display: block" %>
+    <%= form.label :published_at %>
     <%= form.datetime_select :published_at %>
   </div>
 
